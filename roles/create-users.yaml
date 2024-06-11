@@ -1,0 +1,5 @@
+ - name: create new user
+    tags: always
+    user:
+      name: milutinac
+      groups: root
