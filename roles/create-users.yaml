@@ -1,5 +1,10 @@
+ ---
+
+- hosts: all
+  become: true
+  pre_tasks:
  - name: create new user
     tags: always
     user:
-      name: milutinac
+      name: newuser111
       groups: root
