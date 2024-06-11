@@ -1,9 +1,19 @@
- ---
-- name: create new user
+---
+- name: Create new user
   hosts: all
-  become: true
-  pre_tasks:
-    tags: always
-    user:
-      name: newuser111
-      groups: root
+  become: yes
+  vars_prompt:
+    - name: username
+      prompt: "Enter the username you want to create"
+      private: no
+    - name: password
+      prompt: "Enter the password for the new user"
+      private: yes
+  tasks:
+    - name: Add user
+      user:
+        name: "{{ username }}"
+        password: "{{ password | password_hash('sha512') }}"
+        shell: /bin/bash
+        createhome: yes
+        state: present
