@@ -1,8 +1,8 @@
  ---
-- hosts: all
+- name: create new user
+  hosts: all
   become: true
   pre_tasks:
- - name: create new user
     tags: always
     user:
       name: newuser111
