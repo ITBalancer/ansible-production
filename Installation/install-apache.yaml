@@ -1,8 +1,17 @@
-#
-#About: This will install apache
-#
 ---
-  - name: install the latest version of Apache
-  yum:
-    name: httpd
-    state: latest
+  # Always available
+- hosts: all
+  # Execute commands directly instead of over SSH
+  #connection: local
+  # Tasks: now what to do in this play
+  tasks:
+    # Ansible prints this name when running the playbook
+    - name: Install nginx
+      # Now declare the module for this play. The "module" defines
+      # what to do.
+      yum:
+        state: present # This package should be installed
+        name: nginx
+        cache_valid_time: 18000 # 5 hours in seconds
+      # Use sudo
+      become: true
