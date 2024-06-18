@@ -1,21 +1,22 @@
 ---
-hosts: all
-become: true
-tasks:
-  - name: Install a list of packages
-    apt:
-      pkg:
-      - foo
-      - foo-tools
-      - software-properties-common
-      - dialog apt-utils 
-      - htop
-      - iotop
-      - iftop
-      - nload
-      - sysstat
-      - net-tools
-      - iputils-ping
-      - traceroute
-      autoclean: yes
-      clean: yes
+- name: Install list of apt packages
+  hosts: all
+  become: true
+  tasks:
+   - name: Install a list of packages
+     apt:
+       pkg:
+       - foo
+       - foo-tools
+       - software-properties-common
+       - dialog apt-utils 
+       - htop
+       - iotop
+       - iftop
+       - nload
+       - sysstat
+       - net-tools
+       - iputils-ping
+       - traceroute
+       autoclean: yes
+       clean: yes
