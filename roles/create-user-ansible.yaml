@@ -4,8 +4,7 @@
   become: yes
   tasks:
   - name: Create user
-    ansible.builtin.user:
-      user: 
+    user: 
        name: ansible
        shell: /bin/bash
        groups: sudoers,root
