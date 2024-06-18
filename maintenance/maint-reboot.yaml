@@ -2,7 +2,7 @@
 - name: Reboot machine
   hosts: all
 
-  tasks:
-    - name: Reboot machine
+    tasks:
+    - name: Reboot machine and send a message
       ansible.builtin.reboot:
-        reboot_timeout: 0
+      msg: "Rebooting machine in 5 seconds"
