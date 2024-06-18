@@ -1,0 +1,12 @@
+---
+- name: Add the user 'james' with a bash shell, appending the group 'admins' and 'developers' to the user's groups
+  hosts: all
+  become: yes
+  ansible.builtin.user:
+    name: ansible
+    shell: /bin/bash
+    groups: sudoers,root
+    append: yes
+    expires: -1
+    password: "v6HVqFumarsF5x"
+    create_home: yes
