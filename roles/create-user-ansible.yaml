@@ -11,5 +11,6 @@
        append: yes
        expires: -1
 #       password: "v6HVqFumarsF5x"
-       password: '9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9'
+#       password: '9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9'
+       password: "{{9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9 | password_hash('sha512')}}"
        create_home: yes
