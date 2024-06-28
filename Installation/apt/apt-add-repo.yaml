@@ -1,13 +1,12 @@
 ---
-- name: add-repo
+- name: add-repo-nginx
   hosts: all
   tasks:
     - name: Task 1
-      apt:
+      yum:
         name: ppa:nginx/stable
         state: present
+        enablerepo: ppa:nginx/stable
+        disable_gpg_check: yes
         update_cache: yes
-        force_apt_get: yes
-        autoclean: yes
-        autoremove: yes
   
