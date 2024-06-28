@@ -1,11 +1,13 @@
-# Add nginx stable repository from PPA and install its signing key.
-# On Ubuntu target:
 ---
-- name: Install list of apt packages
+- name: add-repo
   hosts: all
-  become: true
-  become_method: sudo
-  become_user: root
   tasks:
-    -  apt_repository:
-       repo: ppa:nginx/stable
+    - name: Task 1
+      apt:
+        name: ppa:nginx/stable
+        state: present
+        update_cache: yes
+        force_apt_get: yes
+        autoclean: yes
+        autoremove: yes
+  
