@@ -1,6 +1,7 @@
 ---
 - name: add-repo-nginx
   hosts: all
+  become_user: root
   tasks:
     - name: Task 1
       yum:

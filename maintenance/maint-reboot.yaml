@@ -7,3 +7,4 @@
       reboot:
         reboot_timeout: 5s
         msg: "Rebooting machine in 5 seconds"
+
