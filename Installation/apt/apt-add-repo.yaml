@@ -7,5 +7,5 @@
   become_method: sudo
   become_user: root
   tasks:
-      apt_repository:
+    -  apt_repository:
        repo: ppa:nginx/stable
