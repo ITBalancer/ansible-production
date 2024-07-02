@@ -1,14 +1,12 @@
 ---
 - name: Update and upgrade apt packages
   hosts: all
-  become: true
 
   tasks:
     - name: Update packages with apt
       when: ansible_pkg_mgr == 'apt'
-      apt:
-        upgrade: yes
-        update_cache: yes
+      ansible.builtin.apt:
+        update_cache: true
 
     - name: Update packages with yum
       when: ansible_pkg_mgr == 'yum'
