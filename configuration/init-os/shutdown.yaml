@@ -1,6 +1,9 @@
 ---
 - hosts: all
   gather_facts: False
+  become: true
+  become_method: sudo
+  become_user: root
   tasks:
   - name: shutdown | selinux.
     replace: dest=/etc/selinux/config regexp=^SELINUX=enforcing replace=SELINUX=disabled
