@@ -20,5 +20,12 @@
        - net-tools
        - iputils-ping
        - traceroute
+       - qemu-guest-agent
        autoclean: yes
        clean: yes
+
+   - name: Start guest qemu-guest-agent
+      ansible.builtin.service:
+        name: qemu-guest-agent
+        state: started
+        enabled: true   
