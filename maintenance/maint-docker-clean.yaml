@@ -1,6 +1,8 @@
 ---
 - name: Clean docker
   hosts: all
+  become_method: sudo
+  become_user: root
 
   tasks:
     - name: Prune non-dangling images
