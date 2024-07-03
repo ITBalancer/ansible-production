@@ -16,7 +16,7 @@
     replace: dest=/etc/fstab regexp='(.*)swap(\s+)swap' replace='# \1swap\2swap'
     tags: swap
 
-  - name: shutdwon | services.
+  - name: shutdown | services.
     service: name={{ item }} state=stopped enabled=false
     with_items:
       - iptables
