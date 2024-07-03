@@ -14,7 +14,7 @@
        expires: -1
 #       password: "v6HVqFumarsF5x"
 #       password: '9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9'
-#       password: "{{9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9 | password_hash('sha512')}}"
+       password: "157cbe2f562f793dbaea02604550dd3fe250c7ef6c147d059be15c14fab8fca6fdf2cd85b76e8ce27180a8677cda19d5dc6c98a33ebf64f30494f6e3e09e94a3"
        create_home: yes
   - name: Set authorized key taken from file
     authorized_key:
