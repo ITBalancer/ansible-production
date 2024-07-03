@@ -2,8 +2,6 @@
 - name: Reboot machine
   hosts: all
   become: true
-  become_method: su
-
   tasks:
     - name: Reboot machine
       ansible.builtin.reboot:
