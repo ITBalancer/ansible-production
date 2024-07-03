@@ -1,10 +1,4 @@
 ---
 - name: Set Belgrade TimeZone
-  hosts: all
-  become: true
-  become_method: sudo
-  become_user: root
-  
-    - name: Set Belgrade TimeZone
-      timezone:
-        name: Europe/Belgrade
+  timezone:
+    name: Europe/Belgrade
