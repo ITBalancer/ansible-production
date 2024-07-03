@@ -16,8 +16,8 @@
     - name: Update packages with apt
       when: ansible_pkg_mgr == 'apt'
       ansible.builtin.apt:
-      name: "*"
-      state: latest    
+        name: "*"
+        state: latest    
 
     - name: Update packages with yum
       when: ansible_pkg_mgr == 'yum'
