@@ -6,6 +6,6 @@
 
   tasks:
 
-    - name: set timezone to Europe/London
+    - name: set timezone to Europe/Belgrade
       timezone:
         name: Europe/Belgrade
