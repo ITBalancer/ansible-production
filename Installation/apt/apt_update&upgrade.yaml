@@ -7,14 +7,11 @@
 
   tasks:
     - name: Update packages with apt
-      ansible.builtin.apt:
-      update_cache: true
+      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
 
   tasks:
     - name: Upgrade packages with apt
-      ansible.builtin.apt:
-      name: "*"
-      state: latest
+      apt: state=latest force_apt_get=yes
 
 
   
