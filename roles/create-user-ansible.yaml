@@ -12,7 +12,7 @@
        groups: root, adm, sudo
        append: yes
        expires: -1
-#       password: "Z4E4rd74cTpjsNYC7EH4b"
+#       password: "Z4E4zard1dsa74ce123213TpjsNsdasdsaqwYC7EH4b"
 #       password: '9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9'
 #       password: '157cbe2f562f793dbaea02604550dd3fe250c7ef6c147d059be15c14fab8fca6fdf2cd85b76e8ce27180a8677cda19d5dc6c98a33ebf64f30494f6e3e09e94a3'
 # I Tried with a password, but it seems to be hashed, no clear text working for now. This will overwrite the previous pw value.
