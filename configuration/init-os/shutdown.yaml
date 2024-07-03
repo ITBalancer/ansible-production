@@ -10,9 +10,9 @@
     ignore_errors: yes
     tags: selinux
 
-  - name: shutdown | swap.
-    replace: dest=/etc/fstab regexp='(.*)swap(\s+)swap' replace='# \1swap\2swap'
-    tags: swap
+#  - name: shutdown | swap.
+#    replace: dest=/etc/fstab regexp='(.*)swap(\s+)swap' replace='# \1swap\2swap'
+#    tags: swap
 
   - name: shutdown | services.
     service: name={{ item }} state=stopped enabled=false
@@ -20,7 +20,6 @@
      - iptables
      - firewalld
      - ufw
-     - NetworkManager
     ignore_errors: yes
     tags:
      - shutdown-services
