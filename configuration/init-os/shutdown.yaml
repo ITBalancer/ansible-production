@@ -1,21 +1,28 @@
 ---
+- name: Update and upgrade apt packages
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
 
-- name: shutdwon | selinux.
-  replace: dest=/etc/selinux/config regexp=^SELINUX=enforcing replace=SELINUX=disabled
-  ignore_errors: yes
-  tags: selinux
+  tasks:
 
-- name: shutdown | swap.
-  replace: dest=/etc/fstab regexp='(.*)swap(\s+)swap' replace='# \1swap\2swap'
-  tags: swap
+  - name: shutdwon | selinux.
+    replace: dest=/etc/selinux/config regexp=^SELINUX=enforcing replace=SELINUX=disabled
+    ignore_errors: yes
+    tags: selinux
 
-- name: shutdwon | services.
-  service: name={{ item }} state=stopped enabled=false
-  with_items:
-    - iptables
-    - firewalld
-    - ufw
-    - NetworkManager
-  ignore_errors: yes
-  tags:
-   - shutdown-services
+  - name: shutdown | swap.
+    replace: dest=/etc/fstab regexp='(.*)swap(\s+)swap' replace='# \1swap\2swap'
+    tags: swap
+
+  - name: shutdwon | services.
+    service: name={{ item }} state=stopped enabled=false
+    with_items:
+      - iptables
+      - firewalld
+      - ufw
+      - NetworkManager
+   ignore_errors: yes
+    tags:
+    - shutdown-services
