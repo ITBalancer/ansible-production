@@ -2,7 +2,9 @@
 - name: Update and upgrade apt packages
   hosts: all
   become_method: sudo
+  become_method: sudo
   become_user: root
+
 
   tasks:
     - name: Update packages with apt
