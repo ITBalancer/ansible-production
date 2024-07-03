@@ -1,5 +1,5 @@
 ---
-- name: shutdwon | selinux.
+- name: shutdown | selinux.
   replace: dest=/etc/selinux/config regexp=^SELINUX=enforcing replace=SELINUX=disabled
   ignore_errors: yes
   tags: selinux
