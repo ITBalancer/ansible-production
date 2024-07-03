@@ -1,0 +1,20 @@
+---
+
+
+- name: Get system check data.
+  script: check_linux.sh
+  register: check_result
+
+- block:
+  - name: Generate report file.
+    template:
+      src: report-cssinline.html
+      dest: "{{ check_report_path | d('/tmp') }}/report{{ check_report_file_suffix | d('') }}.html"
+
+  - name: Get report file content.
+    slurp:
+      src: "{{ check_report_path | d('/tmp') }}/report{{ check_report_file_suffix | d('') }}.html"
+    register: report_data
+
+  run_once: true
+  connection: local
