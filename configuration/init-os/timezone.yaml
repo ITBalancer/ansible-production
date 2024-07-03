@@ -1,6 +1,6 @@
 ---
-- hosts: all
-  gather_facts: False
+- name: Set Belgrade TimeZone
+  hosts: all
   become: true
   become_method: sudo
   become_user: root
