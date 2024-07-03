@@ -6,11 +6,12 @@
   become_user: root
 
   tasks:
-    - name: Update packages with apt
-      apt: update_cache=yes force_apt_get=yes cache_valid_time=3600
-
-    - name: Upgrade packages with apt
-      apt: state=latest force_apt_get=yes
+      - name: Update all host/vm packages
+        ansible.builtin.apt:
+          update_cache: true
+          cache_valid_time: 3600
+          name: "*"
+          state: latest
 
 
   
