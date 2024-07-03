@@ -12,8 +12,7 @@
       ansible.builtin.apt:
         update_cache: true
 
-    tasks:
-    - name: Update packages with apt
+    - name: Upgrade packages with apt
       when: ansible_pkg_mgr == 'apt'
       ansible.builtin.apt:
         name: "*"
