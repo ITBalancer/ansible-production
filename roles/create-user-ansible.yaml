@@ -2,8 +2,9 @@
 - name: Add the user 'ansible' with a bash shell, appending the group 'root' and 'sudoers'
   hosts: all
   become: yes
+  become_method: sudo
   tasks:
-  - name: Create user
+  - name: Create user ansible
     user: 
        name: ansible
        shell: /bin/bash
