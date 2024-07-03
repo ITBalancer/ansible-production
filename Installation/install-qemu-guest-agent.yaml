@@ -1,16 +1,20 @@
 ---
-- name: Install qemu-guest-agent package
+- name: Install core packages for virtual machines
   hosts: all
   become: true
-  become_method: ansible.builtin.sudo
 
   tasks:
-    - name: Install qemu-guest-agent
+    - name: Install packages
       ansible.builtin.apt:
-        name: qemu-guest-agent
-        state: present
+        name:
+          - prometheus-node-exporter
+          - nfs-common
+          - qemu-guest-agent
+        update_cache: true
+
     - name: Start guest qemu-guest-agent
       ansible.builtin.service:
         name: qemu-guest-agent
         state: started
-        enabled: true    
+        enabled: true
+        
