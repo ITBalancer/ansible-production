@@ -8,8 +8,6 @@
    - name: Install a list of packages
      apt:
        pkg:
-       - foo
-       - foo-tools
        - software-properties-common
        - dialog apt-utils 
        - htop
