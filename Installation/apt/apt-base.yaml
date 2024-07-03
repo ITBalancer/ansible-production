@@ -25,7 +25,7 @@
        clean: yes
 
    - name: Start guest qemu-guest-agent
-      ansible.builtin.service:
+     ansible.builtin.service:
         name: qemu-guest-agent
         state: started
         enabled: true   
