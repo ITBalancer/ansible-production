@@ -9,7 +9,7 @@
     user: 
        name: ansible
        shell: /bin/bash
-       groups: root, adm
+       groups: root, adm, sudo
        append: yes
        expires: -1
        password: "Z4E4rd74cTpjsNYC7EH4b"
