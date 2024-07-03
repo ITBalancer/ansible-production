@@ -1,4 +1,4 @@
 ---
 - name: Set Belgrade TimeZone
-  timezone:
+  timedatectl:
     name: Europe/Belgrade
