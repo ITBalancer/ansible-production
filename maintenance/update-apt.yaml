@@ -1,6 +1,7 @@
 ---
 - name: Update and upgrade apt packages
   hosts: all
+  become: true
   become_method: sudo
   become_user: root
 
