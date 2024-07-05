@@ -3,9 +3,9 @@
   become: true
   become_method: sudo
   become_user: root
-
+  vars:
+    time_zone: Europe/Belgrade
   tasks:
-
-    - name: set timezone to Europe/Belgrade
-      timezone:
-        name: Europe/Belgrade
+    - name: Set timezone to {{ time_zone }}
+      community.general.timezone:
+        name: "{{ time_zone }}"
