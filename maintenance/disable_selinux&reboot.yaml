@@ -1,0 +1,11 @@
+---
+- name: Reboot machine
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - - name: Disable SELinux
+        selinux:
+          state: disabled
+        reboot_required: true
