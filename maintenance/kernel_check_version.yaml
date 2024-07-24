@@ -7,7 +7,3 @@
       register: response
     - debug: msg="{{ response.stdout }}"
     
-    - name: Check Installed date
-      shell: stat -c %w /
-      register: response
-    - debug: msg="{{ response.stdout }}"
