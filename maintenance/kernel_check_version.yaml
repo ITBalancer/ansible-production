@@ -2,7 +2,7 @@
 - hosts: all
   gather_facts: False
   tasks:
-    - name: Check Dist Version
+    - name: Check kernel version
       shell: uname -r
       register: response
     - debug: msg="{{ response.stdout }}"
