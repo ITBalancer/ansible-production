@@ -1,0 +1,13 @@
+---
+- hosts: all
+  gather_facts: False
+  tasks:
+    - name: Check Dist Version
+      shell: uname -r
+      register: response
+    - debug: msg="{{ response.stdout }}"
+    
+    - name: Check Installed date
+      shell: stat -c %w /
+      register: response
+    - debug: msg="{{ response.stdout }}"
