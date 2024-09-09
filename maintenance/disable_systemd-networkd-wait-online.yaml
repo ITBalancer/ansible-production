@@ -1,0 +1,11 @@
+---
+- name: Disable systemd-networkd-wait-online.service
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - - name: Disable systemd-networkd-wait-online.service
+        shell: sudo systemctl disable systemd-networkd-wait-online.service
+        reboot_required: true
+
