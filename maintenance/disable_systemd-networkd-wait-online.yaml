@@ -7,5 +7,4 @@
   tasks:
     - - name: Disable systemd-networkd-wait-online.service
         shell: sudo systemctl disable systemd-networkd-wait-online.service
-        reboot_required: true
 
