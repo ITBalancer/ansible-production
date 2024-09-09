@@ -1,10 +1,15 @@
 ---
 - name: Disable systemd-networkd-wait-online.service
   hosts: all
-  become: true
-  become_method: sudo
-  become_user: root
+  become: yes  # to use sudo
   tasks:
-    - - name: Disable systemd-networkd-wait-online.service
-        shell: sudo systemctl disable systemd-networkd-wait-online.service
+    - name: Disable systemd-networkd-wait-online.service
+      ansible.builtin.command:
+        cmd: "systemctl disable systemd-networkd-wait-online.service"
+      register: disable_service
+      changed_when: "'disabled' in disable_service.stdout or 'disabled' in disable_service.stderr"
 
+    - name: Verify the service is disabled
+      ansible.builtin.systemd:
+        name: systemd-networkd-wait-online.service
+        enabled: no
