@@ -44,12 +44,12 @@ fi
 # Install Portainer
 echo "Installing Portainer..."
 sudo docker volume create portainer_data
-sudo docker run -d -p 9000:9000 --name portainer --restart always \
+sudo docker run -d -p 9443:9443 --name portainer --restart always \
     -v /var/run/docker.sock:/var/run/docker.sock \
     -v portainer_data:/data \
     portainer/portainer-ce
 
-echo "Portainer is now running on http://localhost:9000"
+echo "Portainer is now running on http://localhost:9443"
 
 # Feedback to the user
 echo "Installation completed! Please log out and log back in for the Docker group changes to take effect."
