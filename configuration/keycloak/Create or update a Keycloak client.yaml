@@ -1,0 +1,10 @@
+---
+- name: Create or update Keycloak client (minimal example), authentication with credentials
+  community.general.keycloak_client:
+    auth_keycloak_url: https://auth.example.com/auth
+    auth_realm: master
+    auth_username: USERNAME
+    auth_password: PASSWORD
+    client_id: test
+    state: present
+  delegate_to: localhost
