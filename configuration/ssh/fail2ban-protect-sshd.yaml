@@ -2,7 +2,8 @@
 - name: Install fail2ban and configure sshd
   hosts: all
   become: true
-
+  become_method: sudo
+  
   tasks:
     - name: Install fail2ban
       ansible.builtin.apt:
