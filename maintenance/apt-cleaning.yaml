@@ -6,7 +6,7 @@
   tasks:
     - name: Remove packages that were automatically installed to satisfy dependencies for other packages
       ansible.builtin.shell: sudo apt-get -y autoremove
-        msg: "Removing packages that were automatically installed to satisfy dependencies for other packages"
+#        msg: "Removing packages that were automatically installed to satisfy dependencies for other packages"
     - name: Clears out the local repository of retrieved package files
       ansible.builtin.shell: sudo apt-get -y autoclean
-        msg: "Clearing out the local repository of retrieved package files"
+#        msg: "Clearing out the local repository of retrieved package files"
