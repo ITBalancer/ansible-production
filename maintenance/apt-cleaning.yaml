@@ -1,0 +1,12 @@
+---
+- name: Cleaning up apt cache
+  hosts: all
+  become: yes # to use sudo
+  become_user: root  
+  tasks:
+    - name: Remove packages that were automatically installed to satisfy dependencies for other packages
+      ansible.builtin.shell: sudo apt-get -y autoremove
+        msg: "Removing packages that were automatically installed to satisfy dependencies for other packages"
+    - name: Clears out the local repository of retrieved package files
+      ansible.builtin.shell: sudo apt-get -y autoclean
+        msg: "Clearing out the local repository of retrieved package files"
