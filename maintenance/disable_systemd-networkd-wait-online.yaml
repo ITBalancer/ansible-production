@@ -6,5 +6,5 @@
   tasks:
     - name: Check status systemd-networkd-wait-online.service
       ansible.builtin.shell: sudo systemctl status systemd-networkd-wait-online.service
-    - name: Check status systemd-networkd-wait-online.service
-      ansible.builtin.shell: sudo systemctl disable systemd-networkd-wait-online.service
+     - name: Check status systemd-networkd-wait-online.service
+      ansible.builtin.shell: sudo systemctl disable systemd-networkd-wait-online.service 
