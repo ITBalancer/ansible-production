@@ -1,0 +1,12 @@
+---
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+- name: Create a new primary partition for LVM
+  parted:
+    device: /dev/sda
+    number: 2
+    flags: [ lvm ]
+    state: present
+    part_start: 1GiB
