@@ -6,12 +6,5 @@
   tasks:
     - name: Check installed apts
       ansible.builtin.shell: sudo apt list --installed
-#      shell: stat -c %w /
       register: response
-#    - debug: msg="{{ response.stdout }}"
-
-    - name: Send output to Discord
-      community.general.discord:
-        webhook_id: "https://discord.com/api/webhooks/1290050328846139503/_da15R9gua1qSw04sc9pd543OtYoywO3KkH42jYVK4eQCAIJdWCy6sHG6BJqmugMuuHP"
-        method: POST
-        body: msg="{{ response.stdout }}"
+    - debug: msg="{{ response.stdout }}"
