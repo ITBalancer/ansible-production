@@ -9,6 +9,6 @@
     parted:
       device: /dev/sda
       number: 2
-      flags: [ lvm ]
+#      flags: [ lvm ]
       state: present
       part_start: 1GiB
