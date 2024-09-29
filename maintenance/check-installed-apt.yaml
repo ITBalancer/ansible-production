@@ -1,0 +1,11 @@
+---
+- name: Cleaning up apt cache
+  hosts: all
+  become: yes # to use sudo
+  become_user: root  
+  tasks:
+    - name: Check installed apts
+      ansible.builtin.shell: sudo apt list --installed
+      shell: stat -c %w /
+      register: response
+    - debug: msg="{{ response.stdout }}"
