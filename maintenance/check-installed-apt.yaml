@@ -9,3 +9,17 @@
 #      shell: stat -c %w /
       register: response
     - debug: msg="{{ response.stdout }}"
+
+    - name: Send output to Discord
+      uri:
+        url: "https://discord.com/api/webhooks/1290050328846139503/_da15R9gua1qSw04sc9pd543OtYoywO3KkH42jYVK4eQCAIJdWCy6sHG6BJqmugMuuHP"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body_format: json
+        body: |
+          {
+            "content": "{{ response.stdout }}"
+          }
+#     delegate_to: localhost
+      ignore_errors: yes
