@@ -2,7 +2,7 @@ bash
 #!/bin/bash
 
 # Define the directory path
-DIR="/etc/milutin"
+DIR="/home/milutin/data"
 
 # Function to create a directory
 create_directory() {
