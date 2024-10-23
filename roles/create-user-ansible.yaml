@@ -14,7 +14,7 @@
        expires: -1
 #       password: "Z4E4zard1dsa74ce123213TpjsNsdasdsaqwYC7EH4b"
 #       password: '9bb60edccdef824660bf75547e1bd2e8c482fa20e4867922dbb8c172017d9a071ce2df381d3a45407ef1cff5b62cb1e3893bea0207199008dc78fa58780719d9'
-       password: '7920fc8765e57c4c5e5ea43ef1f16b0463bd4f27d9bb6ad505e637ede8605a56cba430098b32b0d000972e26bcfce2ec3796ef83e7bc99ec45773265b4de4275'
+       password: 7920fc8765e57c4c5e5ea43ef1f16b0463bd4f27d9bb6ad505e637ede8605a56cba430098b32b0d000972e26bcfce2ec3796ef83e7bc99ec45773265b4de4275
 # I Tried with a password, but it seems to be hashed, no clear text working for now. This will overwrite the previous pw value.
        create_home: true
   - name: Set authorized key taken from file
