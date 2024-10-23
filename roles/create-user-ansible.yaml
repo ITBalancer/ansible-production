@@ -21,4 +21,4 @@
     authorized_key:
      user: ansible
      state: present
-#     key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHHjZz1iCLiTn5KcRyrSC1WyO/yum+O3rdupB/2BG8rn ansible-user-semaphore01
+     key: ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIh1qaMlD6A/4MnY0fw5VaMxExkzoqJyTENHG9ImGJCo semaphore01
