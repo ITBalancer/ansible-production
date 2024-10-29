@@ -22,4 +22,3 @@
           - /var/run/docker.sock:/var/run/docker.sock
           - portainer-data:/data
         restart_policy: unless-stopped
-        msg: "Pulling and bulding a new container with laterst portainer image"
