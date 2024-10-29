@@ -5,8 +5,6 @@
   become_method: sudo
   become_user: root
 
-
-
     - name: Deploy portainer
       community.docker.docker_container:
         name: portainer
