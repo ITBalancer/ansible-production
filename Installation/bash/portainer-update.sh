@@ -7,7 +7,7 @@
   tasks:
     - name: Copy bash script to target host
       copy:
-        src: /home/ansible/portainer-update.sh     # Path to the script on the Ansible control node
+        src: /Installation/bash/portainer-update.sh     # Path to the script on the Ansible control node
         dest: /tmp/portainer-update.sh
         mode: '0755'
 
