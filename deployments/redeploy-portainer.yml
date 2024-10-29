@@ -5,12 +5,7 @@
   become_method: sudo
   become_user: root
 
-  tasks:
-    - name: Stop and remove the Portainer container if it exists
-      community.docker.docker_container:
-        name: portainer       # The name of the Portainer container
-        state: absent         # Ensure the container is removed
-      ignore_errors: yes      # Ignore errors if the container doesn't exist
+
 
     - name: Deploy portainer
       community.docker.docker_container:
