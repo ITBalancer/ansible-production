@@ -27,4 +27,13 @@
       ansible.builtin.yum:
         name: '*'
         state: latest # noqa: package-latest
-        exclude: kernel*
+        exclude: kernel*  
+
+     - name: Log package updates
+       shell: |
+        echo "Update run on $(date)" >> /var/log/ansible_update.log
+        if [ "{{ ansible_pkg_mgr }}" == "apt" ]; then
+          apt list --upgradable >> /var/log/ansible_update.log
+        elif [ "{{ ansible_pkg_mgr }}" == "yum" ]; then
+          yum list updates >> /var/log/ansible_update.log
+        fi    
