@@ -8,7 +8,7 @@
   tasks:
     - name: Update kernel with script
       when: ansible_pkg_mgr == 'apt'
-      shell: wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/master/ubuntu-mainline-kernel.sh chmod +x ubuntu-mainline-kernel.sh sudo mv ubuntu-mainline-kernel.sh /usr/local/bin/ sudo ubuntu-mainline-kernel.sh -i 6.6.50 sudo update-grub
+      shell: cd ~ wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/master/ubuntu-mainline-kernel.sh chmod +x ubuntu-mainline-kernel.sh sudo mv ubuntu-mainline-kernel.sh /usr/local/bin/ sudo ubuntu-mainline-kernel.sh -i 6.6.50 sudo update-grub
 
 
     - name: waiting for server to come back
