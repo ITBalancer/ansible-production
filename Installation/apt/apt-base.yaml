@@ -9,7 +9,8 @@
      apt:
        pkg:
        - software-properties-common
-       - dialog apt-utils 
+       - dialog 
+       - apt-utils 
        - htop
        - iotop
        - iftop
