@@ -19,5 +19,6 @@
        - iputils-ping
        - traceroute
        - qemu-guest-agent
+       - tmux
        autoclean: yes
        clean: yes
