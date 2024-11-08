@@ -14,13 +14,11 @@
       ansible.builtin.shell: sudo mv ubuntu-mainline-kernel.sh /usr/local/bin/ 
     - name: Choose kernel version for install 
       ansible.builtin.shell: sudo ubuntu-mainline-kernel.sh -i 6.6.50
-    - name: Updated grub 
-      ansible.builtin.shell: sudo update-grub
-
     - name: Wait for 100 seconds before rebooting
       ansible.builtin.pause:
         seconds: 100
-
+    - name: Updated grub 
+      ansible.builtin.shell: sudo update-grub
     - name: Reboot the server
       ansible.builtin.reboot:
         msg: "Rebooting the server after waiting 100 seconds"
