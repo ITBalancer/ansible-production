@@ -5,10 +5,6 @@
   become_method: sudo
   become_user: root
   tasks:
-   - name: Fix broken packages
-      command: apt --fix-broken install -y
-      register: fix_broken_result
-      ignore_errors: yes
    - name: Install a list of packages
      apt:
        pkg:
