@@ -9,10 +9,8 @@
       ansible.builtin.yum:
         name:
           - iotop
-          - btop
           - sysstat
           - nano
-          - iftop 
           - net-tools
           - traceroute
           - qemu-guest-agent
