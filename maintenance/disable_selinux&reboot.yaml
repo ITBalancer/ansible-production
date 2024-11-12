@@ -5,7 +5,13 @@
   become_method: sudo
   become_user: root
   tasks:
-      - name: Disable SELinux
-        selinux:
-          state: disabled
-        reboot_required: true
+    - name: Ensure SELinux is disabled in config file
+      lineinfile:
+        path: /etc/selinux/config
+        regexp: '^SELINUX='
+        line: 'SELINUX=disabled'
+        state: present
+
+    - name: Temporarily set SELinux to permissive mode
+      command: setenforce 0
+      when: ansible_selinux.status == "enabled"
