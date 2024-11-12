@@ -5,7 +5,7 @@
   become_method: sudo
   become_user: root
   tasks:
-    - - name: Disable SELinux
+      - name: Disable SELinux
         selinux:
           state: disabled
         reboot_required: true
