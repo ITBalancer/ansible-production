@@ -1,0 +1,19 @@
+---
+- name: Check installed apts
+  hosts: all
+  become: yes # to use sudo
+  become_user: root 
+  tasks:
+    - name: Ensure SSH configuration allows password authentication
+      lineinfile:
+        path: /etc/ssh/sshd_config
+        regexp: '^#?PasswordAuthentication\s+'
+        line: 'PasswordAuthentication yes'
+        state: present
+      notify: Restart SSH
+
+  handlers:
+    - name: Restart SSH
+      service:
+        name: sshd
+        state: restarted
