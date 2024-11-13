@@ -12,9 +12,9 @@
         line: 'SELINUX=disabled'
         state: present
 
-    - name: Temporarily set SELinux to permissive mode
-      command: setenforce 0
-      when: ansible_selinux.status == "enabled"
+#    - name: Temporarily set SELinux to permissive mode
+#      command: setenforce 0
+#      when: ansible_selinux.status == "enabled"
 
     - name: Reboot machine
       ansible.builtin.reboot:
