@@ -11,7 +11,7 @@
         regexp: '^SELINUX='
         line: 'SELINUX=disabled'
         state: present
-
+#This line broke nodes and push into dracut, removed
 #    - name: Temporarily set SELinux to permissive mode
 #      command: setenforce 0
 #      when: ansible_selinux.status == "enabled"
