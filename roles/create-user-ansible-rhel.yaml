@@ -9,7 +9,7 @@
     user: 
        name: ansible
        shell: /bin/bash
-       groups: root, adm, systemd-journal
+       groups: root, adm, systemd-journal, wheel
        append: yes
        expires: -1
 #       password: "7920fc8765e57c4c5e5ea43ef1f16b0463bd4f27d9bb6ad505e637ede8605a56cba430098b32b0d000972e26bcfce2ec3796ef83e7bc99ec45773265b4de4275"
