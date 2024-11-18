@@ -63,11 +63,11 @@
 
   - name: Configuring Containerd (building the configuration file)
     ansible.builtin.command:
-      cmd: sudo sh -c "containerd config default > /opt/containerd/config.toml"
+      cmd: sudo sh -c "containerd config default > /etc/containerd/config.toml"
 
   - name: Configuring Containerd (Setting SystemdCgroup Variable to True)
     ansible.builtin.command:
-      cmd: sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /opt/containerd/config.toml
+      cmd: sudo sed -i 's/SystemdCgroup = false/SystemdCgroup = true/' /etc/containerd/config.toml
 
   - name: Reload systemd configuration
     ansible.builtin.command:
@@ -104,11 +104,6 @@
   - name: Hold kubelet, kubeadm, kubectl packages
     ansible.builtin.command:
       cmd: sudo apt-mark hold kubelet kubeadm kubectl
-
-  - name: Replace /etc/default/kubelet contents
-    ansible.builtin.copy:
-      dest: /etc/default/kubelet
-      content: 'KUBELET_EXTRA_ARGS="--cgroup-driver=cgroupfs"'
 
   - name: Reload systemd configuration
     ansible.builtin.command:

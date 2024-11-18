@@ -148,10 +148,6 @@
       name: docker
       state: restarted
 
-  - name: Update Kubeadm Environment Variable
-    ansible.builtin.command:
-      cmd: sudo sed -i -e '/^\[Service\]/a Environment="KUBELET_EXTRA_ARGS=--fail-swap-on=false"' /usr/lib/systemd/system/kubelet.service.d/10-kubeadm.conf
-
   - name: Reload systemd configuration
     ansible.builtin.command:
       cmd: systemctl daemon-reload
