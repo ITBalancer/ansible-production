@@ -113,13 +113,10 @@
     ansible.builtin.service:
       name: kubelet
       state: restarted
-
-  - name: Update System-Wide Profile for Kubernetes
-    ansible.builtin.copy:
-      dest: /etc/profile.d/kubernetes.sh
-      content: |
-        export KUBECONFIG=/etc/kubernetes/admin.conf
-        export ANSIBLE_USER="milutin"
+      
+  - name: Enable on start up 
+    ansible.builtin.command:
+      cmd: sudo systemctl enable --now kubelet  
 
   - name: Reboot the system
     ansible.builtin.reboot:

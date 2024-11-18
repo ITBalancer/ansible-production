@@ -114,6 +114,10 @@
       name: kubelet
       state: restarted
 
+  - name: Enable on start up 
+    ansible.builtin.command:
+      cmd: sudo systemctl enable --now kubelet  
+
   - name: Reboot the system
     ansible.builtin.reboot:
       msg: "Reboot initiated by Ansible for Kubernetes setup"
