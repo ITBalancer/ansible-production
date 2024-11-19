@@ -21,6 +21,9 @@
   - name: Remove kube home directory
     ansible.builtin.shell: sudo rm -rf ~/.kube
 
+  - name: Create directory for containerd
+    ansible.builtin.shell: sudo rm -rf /etc/containerd
+
   - name: Remove Keyrings Directory (if it exists)
     ansible.builtin.shell: sudo rm -rf /etc/apt/keyrings
 
