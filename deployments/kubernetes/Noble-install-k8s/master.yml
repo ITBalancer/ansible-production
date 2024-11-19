@@ -61,11 +61,11 @@
     ansible.builtin.command:
       cmd: sudo sysctl --system
 
-#  - name: Create directory for containerd
-#    ansible.builtin.shell: sudo mkdir /etc/containerd
+  - name: Create directory for containerd
+    ansible.builtin.shell: mkdir /etc/containerd
 
-#  - name: Create config.toml for containerd
-#    ansible.builtin.shell: sudo touch /etc/containerd/config.toml
+  - name: Create config.toml for containerd
+    ansible.builtin.shell: touch /etc/containerd/config.toml
 
   - name: Configuring Containerd (building the configuration file)
     ansible.builtin.shell: containerd config default | sudo tee /etc/containerd/config.toml
