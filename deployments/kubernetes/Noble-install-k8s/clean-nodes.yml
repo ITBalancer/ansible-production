@@ -13,7 +13,6 @@
   - name: Run kubeadm reset
     ansible.builtin.command:
       cmd: kubeadm reset -f
-      ignore_errors: true     
 
   - name: Remove kube packages
     ansible.builtin.shell: sudo apt remove -y kubeadm kubectl kubelet kubernetes-cni kube*
