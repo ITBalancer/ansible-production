@@ -13,7 +13,7 @@
     ansible.builtin.shell: sudo apt remove kubeadm kubectl kubelet kubernetes-cni kube*
 
   - name: APT autoremove dependencies
-    ansible.biltin.shell: sudo apt autoremove  
+    ansible.builtin.shell: sudo apt autoremove  
 
   - name: Remove kube home directory
-    ansible.biltin.shell: sudo rm -rf ~/.kube
+    ansible.builtin.shell: sudo rm -rf ~/.kube
