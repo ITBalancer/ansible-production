@@ -11,7 +11,7 @@
 # Need to add auto confirmation for "yes" as appears question "Are you sure you want to proceed? [y/N]:"
 
   - name: Remove kube packages
-    ansible.builtin.shell: sudo apt remove kubeadm kubectl kubelet kubernetes-cni kube*
+    ansible.builtin.shell: sudo apt remove -y kubeadm kubectl kubelet kubernetes-cni kube*
 
   - name: APT autoremove dependencies
     ansible.builtin.shell: sudo apt autoremove  
