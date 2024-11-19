@@ -159,8 +159,9 @@
     ansible.builtin.command:
       cmd: sudo kubeadm config images pull
 
-  - name: Install a Pod Network Add-on
-    ansible.builtin.shell: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml    
+#  - name: Install a Pod Network Add-on
+#    ansible.builtin.shell: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml    
+#To fix this line, needs to run without root, need to change "become root"
 
 #  - name: Initialize Kubernetes control plane
 #    ansible.builtin.command:
