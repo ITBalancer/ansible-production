@@ -61,9 +61,9 @@
     ansible.builtin.command:
       cmd: sudo sysctl --system
 
-  - name: Create directory for containerd
-    ansible.builtin.command: 
-      cmd: sudo mkdir /etc/containerd
+#  - name: Create directory for containerd
+#    ansible.builtin.command: 
+#      cmd: sudo mkdir /etc/containerd
 
   - name: Configuring Containerd (building the configuration file)
     ansible.builtin.command:
