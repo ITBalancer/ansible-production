@@ -1,0 +1,19 @@
+---
+- name: Clean node
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+
+  - name: Remove kubadm config
+    ansible.builtin.shell: sudo kubeadm reset
+
+  - name: Remove kube packages
+    ansible.builtin.shell: sudo apt remove kubeadm kubectl kubelet kubernetes-cni kube*
+
+  - name: APT autoremove dependencies
+    ansible.biltin.sheel: sudo apt autoremove  
+
+  - name: Remove kube home directory
+    ansible.biltin.sheel: sudo rm -rf ~/.kube
