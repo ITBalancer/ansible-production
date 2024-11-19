@@ -63,7 +63,7 @@
 
   - name: Configuring Containerd (building the configuration file)
     ansible.builtin.command:
-      cmd: sudo sh -c "containerd config default > /etc/containerd/config.toml"
+      cmd: containerd config default > /etc/containerd/config.toml
 
   - name: Configuring Containerd (Setting SystemdCgroup Variable to True)
     ansible.builtin.command:
