@@ -10,17 +10,43 @@
 #    ansible.builtin.shell: sudo kubeadm reset
 # Need to add auto confirmation for "yes" as appears question "Are you sure you want to proceed? [y/N]:"
 
+  - name: Stop kubelet service
+    ansible.builtin.service:
+      name: kubelet
+      state: stopped
+      enabled: false
+
+  - name: Run kubeadm reset
+    ansible.builtin.command:
+      cmd: kubeadm reset -f
+      ignore_errors: true     
+
   - name: Remove kube packages
     ansible.builtin.shell: sudo apt remove -y kubeadm kubectl kubelet kubernetes-cni kube*
 
   - name: APT autoremove dependencies
-    ansible.builtin.shell: sudo apt autoremove  
+    ansible.builtin.shell: sudo apt autoremove -y
 
   - name: Remove kube home directory
     ansible.builtin.shell: sudo rm -rf ~/.kube
 
   - name: Remove Keyrings Directory (if it exists)
-    ansible.builtin.shell: rm -rf /etc/apt/keyrings
+    ansible.builtin.shell: sudo rm -rf /etc/apt/keyrings
 
   - name: Remove Existing Kubernetes Directory (if it exists)
     ansible.builtin.shell: sudo rm -rf /etc/apt/sources.list.d/pkgs_k8s_io_core_stable_v*
+
+  - name: Remove Kubernetes-related files
+    ansible.builtin.file:
+      path: "{{ item }}"
+      state: absent
+    loop:
+      - /etc/kubernetes
+      - /var/lib/etcd
+      - /var/lib/kubelet
+      - /etc/cni/net.d
+      - /var/lib/cni
+
+  - name: Display completion message
+    ansible.builtin.debug:
+      msg: "Kubeadm reset completed on {{ inventory_hostname }}"
