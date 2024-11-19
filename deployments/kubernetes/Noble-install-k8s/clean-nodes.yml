@@ -30,8 +30,8 @@
   - name: Remove Existing Kubernetes Directory (if it exists)
     ansible.builtin.shell: sudo rm -rf /etc/apt/sources.list.d/pkgs_k8s_io_core_stable_v*
 
-  - name: Remove Existing Kubernetes Directory (if it exists)
-    ansible.builtin.shell: sudo rm /etc/apt/sources.list.d/kubernetes*
+#  - name: Remove Existing Kubernetes Directory (if it exists)
+#    ansible.builtin.shell: sudo rm /etc/apt/sources.list.d/kubernetes*
 
   - name: Remove Kubernetes-related files
     ansible.builtin.file:
