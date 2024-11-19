@@ -10,8 +10,8 @@
 #    ansible.builtin.shell: sudo kubeadm reset
 # Need to add auto confirmation for "yes" as appears question "Are you sure you want to proceed? [y/N]:"
 
-  - name: Run kubeadm reset(force no promet question)
-    ansible.builtin.shell: kubeadm reset -f
+#  - name: Run kubeadm reset(force no promet question)
+#    ansible.builtin.shell: kubeadm reset -f
 
   - name: Remove kube packages
     ansible.builtin.shell: sudo apt remove -y kubeadm kubectl kubelet kubernetes-cni kube*
