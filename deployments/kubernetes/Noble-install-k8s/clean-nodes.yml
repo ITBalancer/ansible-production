@@ -9,6 +9,9 @@
   - name: Remove kubadm config
     ansible.builtin.shell: sudo kubeadm reset
 
+  - name: Remove kubadm config
+    ansible.builtin.shell: yes 
+
   - name: Remove kube packages
     ansible.builtin.shell: sudo apt remove kubeadm kubectl kubelet kubernetes-cni kube*
 
