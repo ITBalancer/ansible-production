@@ -150,10 +150,6 @@
       name: docker
       state: restarted
 
-  - name: Reload systemd configuration
-    ansible.builtin.command:
-      cmd: systemctl daemon-reload
-
   - name: Restart kubelet service
     ansible.builtin.service:
       name: kubelet
@@ -163,34 +159,37 @@
     ansible.builtin.command:
       cmd: sudo kubeadm config images pull
 
-  - name: Initialize Kubernetes control plane
-    ansible.builtin.command:
-      cmd: kubeadm init --pod-network-cidr=10.0.0.0/23
-      creates: /tmp/kubeadm_output
-    register: kubeadm_init_output
-    become: true
-    changed_when: false
+  - name: Install a Pod Network Add-on
+    ansible.builtin.shell: kubectl apply -f https://docs.projectcalico.org/manifests/calico.yaml    
 
-  - name: Set permissions for Kubernetes Admin
-    file:
-      path: /etc/kubernetes/admin.conf
-      state: file
-      mode: '0755'
-
-  - name: Store Kubernetes initialization output to file
-    copy:
-      content: "{{ kubeadm_init_output.stdout }}"
-      dest: /tmp/kubeadm_output
-    become: true
-    delegate_to: localhost
-
-  - name: Generate the Join Command
-    ansible.builtin.shell: cat /tmp/kubeadm_output | tail -n 2 | sed ':a;N;$!ba;s/\\\n\s*/ /g' > /tmp/join-command
-    delegate_to: localhost
-
-  - name: Set permissions for the Join Executable
-    file:
-      path: /tmp/join-command
-      state: file
-      mode: '0755'
-    delegate_to: localhost
+#  - name: Initialize Kubernetes control plane
+#    ansible.builtin.command:
+#      cmd: kubeadm init --pod-network-cidr=10.0.0.0/23
+#      creates: /tmp/kubeadm_output
+#    register: kubeadm_init_output
+#    become: true
+#    changed_when: false
+#
+#  - name: Set permissions for Kubernetes Admin
+#    file:
+#      path: /etc/kubernetes/admin.conf
+#      state: file
+#      mode: '0755'
+#
+#  - name: Store Kubernetes initialization output to file
+#    copy:
+#      content: "{{ kubeadm_init_output.stdout }}"
+#      dest: /tmp/kubeadm_output
+#    become: true
+#    delegate_to: localhost
+#
+#  - name: Generate the Join Command
+#    ansible.builtin.shell: cat /tmp/kubeadm_output | tail -n 2 | sed ':a;N;$!ba;s/\\\n\s*/ /g' > /tmp/join-command
+#    delegate_to: localhost
+#
+#  - name: Set permissions for the Join Executable
+#    file:
+#      path: /tmp/join-command
+#      state: file
+#      mode: '0755'
+#    delegate_to: localhost
