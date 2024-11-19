@@ -17,3 +17,9 @@
 
   - name: Remove kube home directory
     ansible.builtin.shell: sudo rm -rf ~/.kube
+
+  - name: Remove Keyrings Directory (if it exists)
+    ansible.builtin.shell: rm -rf /etc/apt/keyrings
+
+  - name: Remove Existing Kubernetes Directory (if it exists)
+    ansible.builtin.shell: sudo rm -rf /etc/apt/sources.list.d/pkgs_k8s_io_core_stable_v*
