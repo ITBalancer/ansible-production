@@ -128,32 +128,32 @@
       msg: "Reboot initiated by Ansible for Kubernetes setup"
       reboot_timeout: 150
 
-  - name: Replace Docker daemon.json configuration
-    ansible.builtin.copy:
-      dest: /etc/docker/daemon.json
-      content: |
-        {
-          "exec-opts": ["native.cgroupdriver=systemd"],
-          "log-driver": "json-file",
-          "log-opts": {
-            "max-size": "100m"
-          },
-          "storage-driver": "overlay2"
-        }
+#  - name: Replace Docker daemon.json configuration
+#    ansible.builtin.copy:
+#      dest: /etc/docker/daemon.json
+#      content: |
+#        {
+#          "exec-opts": ["native.cgroupdriver=systemd"],
+#          "log-driver": "json-file",
+#          "log-opts": {
+#            "max-size": "100m"
+#          },
+#          "storage-driver": "overlay2"
+#        }
+#
+#  - name: Reload systemd configuration
+#    ansible.builtin.command:
+#      cmd: systemctl daemon-reload
 
-  - name: Reload systemd configuration
-    ansible.builtin.command:
-      cmd: systemctl daemon-reload
-
-  - name: Restart Docker service
-    ansible.builtin.service:
-      name: docker
-      state: restarted
-
-  - name: Restart kubelet service
-    ansible.builtin.service:
-      name: kubelet
-      state: restarted
+#  - name: Restart Docker service
+#    ansible.builtin.service:
+#      name: docker
+#      state: restarted
+#
+#  - name: Restart kubelet service
+#    ansible.builtin.service:
+#      name: kubelet
+#      state: restarted
 
   - name: Pull kubeadm container images
     ansible.builtin.command:
