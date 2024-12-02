@@ -1,0 +1,48 @@
+---
+- name: Check installed packages across distributions
+  hosts: all
+  become: yes # to use sudo
+  become_user: root 
+
+  tasks:
+    - name: Determine package manager and get installed packages
+      block:
+        - name: Check for Debian-based distributions
+          when: ansible_facts['os_family'] == "Debian"
+          command: dpkg --get-selections
+          register: dpkg_output
+
+        - name: Check for Red Hat-based distributions
+          when: ansible_facts['os_family'] == "RedHat"
+          command: rpm -qa
+          register: rpm_output
+
+        - name: Check for Arch-based distributions
+          when: ansible_facts['os_family'] == "Archlinux"
+          command: pacman -Q
+          register: pacman_output
+
+        - name: Check for Alpine Linux
+          when: ansible_facts['os_family'] == "Alpine"
+          command: apk info
+          register: apk_output
+
+      always:
+        - name: Display installed packages
+          debug:
+            msg: >
+              {%- if dpkg_output is defined -%}
+              Debian/Ubuntu Installed Packages:
+              {{ dpkg_output.stdout }}
+              {%- elif rpm_output is defined -%}
+              RedHat Installed Packages:
+              {{ rpm_output.stdout }}
+              {%- elif pacman_output is defined -%}
+              Arch Installed Packages:
+              {{ pacman_output.stdout }}
+              {%- elif apk_output is defined -%}
+              Alpine Installed Packages:
+              {{ apk_output.stdout }}
+              {%- else -%}
+              Unknown Distribution: Unable to determine package manager.
+              {%- endif -%}
