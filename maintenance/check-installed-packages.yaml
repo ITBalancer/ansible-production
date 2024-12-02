@@ -3,10 +3,6 @@
   hosts: all
   become: yes # to use sudo
   become_user: root 
-  gather_facts: true
-
-  vars:
-    slack_webhook_url: https://hooks.slack.com/services/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
 
   tasks:
     - name: Determine package manager and get installed packages
@@ -51,15 +47,3 @@
               Unknown Distribution: Unable to determine package manager.
               {%- endif -%}
 
-
-        - name: Send output to Slack
-          uri:
-            url: "{{ slack_webhook_url }}"
-            method: POST
-            headers:
-              Content-Type: "application/json"
-            body: |
-              {
-                "text": "{{ package_output | default('No output collected') | truncate(3000) }}"
-              }
-            body_format: json
