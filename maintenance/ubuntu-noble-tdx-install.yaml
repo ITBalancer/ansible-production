@@ -11,3 +11,6 @@
       ansible.builtin.shell: cd tdx
     - name: Run installation
       ansible.builtin.shell: sudo ./setup-tdx-host.sh
+    - name: Reboot machine
+      ansible.builtin.reboot:
+        reboot_timeout: 5    

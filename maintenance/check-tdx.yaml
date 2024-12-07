@@ -1,0 +1,15 @@
+- name: Reboot machine
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+  tasks:
+    - name: Verify that Intel TDX is enabled
+      shell: sudo dmesg | grep -i tdx
+      register: response
+    - debug: msg="{{ response.stdout }}"
+
+    - name: Check Asset tag
+      shell: sudo dmidecode -t 2 | grep Asset
+      register: response
+    - debug: msg="{{ response.stdout }}"
