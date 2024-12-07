@@ -47,3 +47,19 @@
               Unknown Distribution: Unable to determine package manager.
               {%- endif -%}
 
+    - name: Split the output into chunks of 1000 characters
+      set_fact:
+        output_chunks: "{{ package_output | wordwrap(1000) | split('\n') }}"
+
+    - name: Send each chunk as a separate Slack message
+      loop: "{{ output_chunks }}"
+      uri:
+        url: "{{ slack_webhook_url }}"
+        method: POST
+        headers:
+          Content-Type: "application/json"
+        body: |
+          {
+            "text": "{{ item }}"
+          }
+        body_format: json
