@@ -1,4 +1,4 @@
-- name: Reboot machine
+- name: Verify that Intel TDX is enabled
   hosts: all
   become: true
   become_method: sudo
