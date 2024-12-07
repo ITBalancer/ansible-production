@@ -7,7 +7,10 @@
   tasks:
     - name: Clone script
       ansible.builtin.shell: git clone -b noble-24.04 https://github.com/canonical/tdx.git
-    - name: Cd into directory
+    - name: move into tdx directory
       ansible.builtin.shell: cd tdx
     - name: Run installation
       ansible.builtin.shell: sudo ./setup-tdx-host.sh
+    - name: Reboot machine
+      ansible.builtin.reboot:
+        reboot_timeout: 5    
