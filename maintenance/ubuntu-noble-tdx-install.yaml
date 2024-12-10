@@ -3,10 +3,12 @@
   hosts: all
   become: true
   tasks:
-    - name: Clone script
-      ansible.builtin.shell: git clone -b noble-24.04 https://github.com/canonical/tdx.git
-    - name: move into tdx directory
-      ansible.builtin.shell: cd /home/ubuntu/tdx
-    - name: Run installation
-      ansible.builtin.shell: sudo ./setup-tdx-host.sh
- 
+    - name: Clone the repository
+      ansible.builtin.git:
+        repo: https://github.com/canonical/tdx.git      #git clone -b noble-24.04 https://github.com/canonical/tdx.git #Also, this needs at least kernel: 6.11 linux-generic
+        dest: /home/ubuntu/tdx
+        version: noble-24.04
+    - name: Run setup script
+      ansible.builtin.command:
+        cmd: ./setup-tdx-host.sh
+        chdir: /home/ubuntu/tdx
