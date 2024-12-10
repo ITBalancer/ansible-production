@@ -2,12 +2,8 @@
 - name: Create PostgreSQL database on remote server
   hosts: all
   become: false
-  vars:
-    db_name: my_remote_database
-    db_owner: my_remote_user
-    db_password: my_remote_password
-    db_host: remote_postgresql_host
-    db_port: 5432
+  vars_files:
+    - vars/main.yml
 
   tasks:
 

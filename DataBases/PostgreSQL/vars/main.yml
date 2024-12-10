@@ -1,0 +1,5 @@
+db_name: my_remote_database
+db_owner: my_remote_user
+db_password: my_remote_password
+db_host: remote_postgresql_host
+db_port: 5432
