@@ -1,0 +1,12 @@
+---
+- name: Print IP Address Layout of Hosts
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Print IP address layout
+      community.routeros.api:
+      register: ipaddrd_printout
+
+    - name: Dump "Get example" output
+      ansible.builtin.debug:
+        msg: '{{ ipaddrd_printout }}'
