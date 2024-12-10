@@ -12,3 +12,4 @@
       ansible.builtin.command:
         cmd: ./setup-tdx-host.sh
         chdir: /home/ubuntu/tdx
+#This playbook is not tested yet
