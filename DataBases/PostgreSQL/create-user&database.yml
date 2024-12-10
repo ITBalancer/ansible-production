@@ -1,0 +1,44 @@
+---
+- name: Create PostgreSQL database on remote server
+  hosts: all
+  become: false
+  vars:
+    db_name: my_remote_database
+    db_owner: my_remote_user
+    db_password: my_remote_password
+    db_host: remote_postgresql_host
+    db_port: 5432
+
+  tasks:
+
+    - name: Install PostgreSQL Python library (RedHat)
+      ansible.builtin.yum:
+        name: python3-psycopg2
+        state: present
+      when: ansible_os_family == 'RedHat'
+
+    - name: Install PostgreSQL Python library (Debian)
+      ansible.builtin.apt:
+        name: python3-psycopg2
+        state: present
+      when: ansible_os_family == 'Debian'
+
+    - name: Create database user on remote PostgreSQL
+      community.postgresql.postgresql_user:
+        name: "{{ db_owner }}"
+        password: "{{ db_password }}"
+        state: present
+        login_host: "{{ db_host }}"
+        login_user: postgres
+        login_password: postgres_password
+        port: "{{ db_port }}"
+
+    - name: Create database on remote PostgreSQL
+      community.postgresql.postgresql_db:
+        name: "{{ db_name }}"
+        owner: "{{ db_owner }}"
+        state: present
+        login_host: "{{ db_host }}"
+        login_user: postgres
+        login_password: postgres_password
+        port: "{{ db_port }}"
