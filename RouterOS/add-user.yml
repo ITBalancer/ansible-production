@@ -6,4 +6,4 @@
     - name: Create ansible user
       community.routeros.command:
         commands:
-          - add name=ansible password=password group=full address=10.0.0.104/32 #access ip for user
+          - /user/add name=ansible password=password group=full address=10.0.0.104/32 #access ip for user
