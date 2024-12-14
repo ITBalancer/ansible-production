@@ -1,0 +1,9 @@
+---
+- name: Create access ansible user
+  hosts: all
+  gather_facts: true
+  tasks:
+    - name: Create ansible user
+      community.routeros.command:
+        commands:
+          - add name=ansible password=password group=full address=10.0.0.104/32 #access ip for user
