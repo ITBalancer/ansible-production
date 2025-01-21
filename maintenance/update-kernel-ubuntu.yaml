@@ -1,5 +1,5 @@
 ---
-- name: Update kernel on Ubuntu to 6.6.50
+- name: Update kernel on Ubuntu to 6.6.63
   hosts: all
   become: true
   become_method: sudo
@@ -13,7 +13,7 @@
     - name: Move to bin
       ansible.builtin.shell: sudo mv ubuntu-mainline-kernel.sh /usr/local/bin/ 
     - name: Choose kernel version for install 
-      ansible.builtin.shell: sudo ubuntu-mainline-kernel.sh -i 6.6.50
+      ansible.builtin.shell: sudo ubuntu-mainline-kernel.sh -i 6.6.63
     - name: Wait for 100 seconds before rebooting
       ansible.builtin.pause:
         seconds: 100
@@ -23,7 +23,7 @@
       ansible.builtin.reboot:
         msg: "Rebooting the server after waiting 100 seconds"
         connect_timeout: 5
-        reboot_timeout: 600
+        reboot_timeout: 250
 
     - name: Check kernel version after reboot
       ansible.builtin.command: uname -a
