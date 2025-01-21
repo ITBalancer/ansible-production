@@ -5,18 +5,7 @@
   become_method: sudo
   become_user: root
 
-  tasks:
-    - name: Download kernel
-      ansible.builtin.shell: wget https://raw.githubusercontent.com/pimlie/ubuntu-mainline-kernel.sh/master/ubuntu-mainline-kernel.sh
-    - name: Add +x
-      ansible.builtin.shell: chmod +x ubuntu-mainline-kernel.sh
-    - name: Move to bin
-      ansible.builtin.shell: sudo mv ubuntu-mainline-kernel.sh /usr/local/bin/ 
-    - name: Choose kernel version for install 
-      ansible.builtin.shell: sudo ubuntu-mainline-kernel.sh -i 6.6.63
-    - name: Wait for 100 seconds before rebooting
-      ansible.builtin.pause:
-        seconds: 100
+
     - name: Update GRUB configuration to set default kernel
       lineinfile:
         path: /etc/default/grub
