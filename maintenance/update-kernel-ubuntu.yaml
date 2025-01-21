@@ -17,8 +17,15 @@
     - name: Wait for 100 seconds before rebooting
       ansible.builtin.pause:
         seconds: 100
-    - name: Updated grub 
-      ansible.builtin.shell: sudo update-grub
+    - name: Update GRUB configuration to set default kernel
+      lineinfile:
+        path: /etc/default/grub
+        regexp: '^GRUB_DEFAULT='
+        line: 'GRUB_DEFAULT="Advanced options for Ubuntu>Ubuntu, with Linux 6.6.63-060663-generic"'
+
+    - name: Update grub
+      ansible.builtin.command: sudo update-grub 
+
     - name: Reboot the server
       ansible.builtin.reboot:
         msg: "Rebooting the server after waiting 100 seconds"
@@ -32,4 +39,5 @@
     - name: Display kernel version output
       ansible.builtin.debug:
         msg: "Kernel version after reboot: {{ kernel_info.stdout }}"
+
 
