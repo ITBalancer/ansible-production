@@ -1,0 +1,10 @@
+---
+- name: URemove all unused kernels
+  hosts: all
+  become: true
+  become_method: sudo
+  become_user: root
+
+  tasks:
+    - name: Remove all unused kernels
+      ansible.builtin.shell: sudo apt-get autoremove --purge
