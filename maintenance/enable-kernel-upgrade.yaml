@@ -1,0 +1,8 @@
+---
+- name: Remove kernel package from hold of upgrades
+  hosts: all
+  become: yes # to use sudo
+  become_user: root  
+  tasks:
+    - name: Remove kernel package from hold of upgrades
+      ansible.builtin.shell: sudo apt-mark hold linux-image-generic linux-headers-generic linux-generic 
